@@ -1,0 +1,119 @@
+{% extends 'layout.html' %} {% block body %}
+
+
+<style>
+  html body {
+    background-color: rgb(206, 206, 228);
+  }
+</style>
+<br /><br />
+<h2 style="text-align: center; margin: 0px; color: black">
+  <b>Find out about the soil fertility</b>
+</h2>
+<br />
+<br>
+
+<div style="
+    width: 350px;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+    font-weight: bold;
+  ">
+
+
+
+
+  <form class="form-signin" method=post action="/fertility-predict">
+    <h2 class="h4 mb-3 font-weight-normal"><b>Enter details of soil sample </b></h2>
+    <!-- pH, EC, OC, OM, N, P, K, Zn, Fe, Cu, Mn, Sand, Silt, Clay, CaCO3, CEC -->
+    <div class="form-group">
+      <label for="pH" style="font-size: 17px"><b>pH Value</b></label>
+      <input type="number" class="form-control" id="pH" name="pH" placeholder="Enter the value (example:7)"
+        style="font-weight: bold" min="0" max="14" step=".01" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="EC" style="font-size: 17px"><b>EC</b></label>
+      <input type="number" class="form-control" id="EC" name="EC" placeholder="Enter the value (example:0.5)"
+        style="font-weight: bold" min="0.00" max="5.00" step=".01" required m />
+    </div>
+    <div class="form-group">
+      <label for="OC" style="font-size: 17px"><b>OC</b></label>
+      <input type="number" class="form-control" id="OC" name="OC" placeholder="Enter the value (example:.5)" min="0.00"
+        max="5.00" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="OM" style="font-size: 17px"><b>OM</b></label>
+      <input type="number" class="form-control" id="OM" name="OM" placeholder="Enter the value (example:.5)" min="0.00"
+        max="5.00" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="N" style="font-size: 17px"><b>N</b></label>
+      <input type="number" class="form-control" id="N" name="N" placeholder="Enter the value (example:150)" min="0"
+        max="500" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="P" style="font-size: 17px"><b>P</b></label>
+      <input type="number" class="form-control" id="P" name="P" placeholder="Enter the value (example:10)" min="0"
+        max="50" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="K" style="font-size: 17px"><b>K</b></label>
+      <input type="number" class="form-control" id="K" name="K" placeholder="Enter the value (example:150)" min="0"
+        max="1000" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="Zn" style="font-size: 17px"><b>Zn</b></label>
+      <input type="number" class="form-control" id="Zn" name="Zn" placeholder="Enter the value (example:.5)" min="0.00"
+        max="5.00" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="Fe" style="font-size: 17px"><b>Fe</b></label>
+      <input type="number" class="form-control" id="Fe" name="Fe" placeholder="Enter the value (example:.5)" min="0.00"
+        max="5.00" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="Cu" style="font-size: 17px"><b>Cu</b></label>
+      <input type="number" class="form-control" id="Cu" name="Cu" placeholder="Enter the value (example:.5)" min="0.00"
+        max="5.00" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="Mn" style="font-size: 17px"><b>Mn</b></label>
+      <input type="number" class="form-control" id="Mn" name="Mn" placeholder="Enter the value (example:.5)" min="0.00"
+        max="5.00" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="Sand" style="font-size: 17px"><b>Sand</b></label>
+      <input type="number" class="form-control" id="Sand" name="Sand" placeholder="Enter the value (example:50)"
+        style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="Silt" style="font-size: 17px"><b>Silt</b></label>
+      <input type="number" class="form-control" id="Silt" name="Silt" placeholder="Enter the value (example:.5)"
+        min="0.00" max="100.00" style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="Clay" style="font-size: 17px"><b>Clay</b></label>
+      <input type="number" class="form-control" id="Clay" name="Clay" placeholder="Enter the value (example:10)"
+        style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="CaCO3" style="font-size: 17px"><b>CaCO3</b></label>
+      <input type="number" class="form-control" id="CaCO3" name="CaCO3" placeholder="Enter the value (example:10)"
+        style="font-weight: bold" step=".01" required />
+    </div>
+    <div class="form-group">
+      <label for="CEC" style="font-size: 17px"><b>CEC</b></label>
+      <input type="number" class="form-control" id="CEC" name="CEC" placeholder="Enter the value (example:10)"
+        style="font-weight: bold" step=".01" required />
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" style="font-weight: bold;">Predict Soil
+      Fertility</button>
+  </form>
+</div>
+
+
+
+</div>
+{% endblock %}
